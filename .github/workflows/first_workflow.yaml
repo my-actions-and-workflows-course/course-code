@@ -16,7 +16,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: View SW Version
-        run: sw-vers
+        run: echo "hello world from macos"
 
   dependent-job:
     runs-on: windows-latest
