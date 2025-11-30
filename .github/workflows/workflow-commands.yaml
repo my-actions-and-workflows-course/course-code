@@ -15,3 +15,12 @@ jobs:
         run: echo "::warning title:Warning title, file=app.js,line=2,endLine=3,col=5,endColumn=7::MY Warning Message"
       - name: Setting an notice message with params
         run: echo "::notice title:Notice title, file=app.js,line=2,endLine=3,col=5,endColumn=7::MY Notice Message"
+      - name: Group of logs
+        run: |
+          echo "::group::My Group title"
+          echo "Inside group"
+          echo "::endgroup::"
+      - name: Maskin a value
+        run: "echo ::add-mask:: secret_string"
+      - name: Echo a secret
+        run: "echo Sectret string"
