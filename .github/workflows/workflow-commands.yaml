@@ -8,13 +8,13 @@ jobs:
       - name: Setting an error message
         run: echo "::error::Missing semicolon"
       - name: Setting an error message with params
-        run: echo "::error title:Error title, file=app.js,line=2,endLine=3,col=5,endColumn=7::MY Error Message"
+        run: echo "::error title=Error title, file=app.js,line=2,endLine=3,col=5,endColumn=7::MY Error Message"
       - name: Setting an debug message with params
-        run: echo "::debug title:Debug title, file=app.js,line=2,endLine=3,col=5,endColumn=7::MY Debug Message"
+        run: echo "::debug title=Debug title, file=app.js,line=2,endLine=3,col=5,endColumn=7::MY Debug Message"
       - name: Setting an warning message with params
-        run: echo "::warning title:Warning title, file=app.js,line=2,endLine=3,col=5,endColumn=7::MY Warning Message"
+        run: echo "::warning title=Warning title, file=app.js,line=2,endLine=3,col=5,endColumn=7::MY Warning Message"
       - name: Setting an notice message with params
-        run: echo "::notice title:Notice title, file=app.js,line=2,endLine=3,col=5,endColumn=7::MY Notice Message"
+        run: echo "::notice title=Notice title, file=app.js,line=2,endLine=3,col=5,endColumn=7::MY Notice Message"
       - name: Group of logs
         run: |
           echo "::group::My Group title"
