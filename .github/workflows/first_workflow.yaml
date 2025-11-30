@@ -23,4 +23,4 @@ jobs:
     needs: run-shell-commands
     steps:
       - name: echo string steps
-        run: Write-Output "Windows String"
+        run: Write-Output "Windows String v2"
