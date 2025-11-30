@@ -16,7 +16,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: View SW Version
-        run: sw-version
+        run: sw-vers
 
   dependent-job:
     runs-on: windows-latest
@@ -24,5 +24,3 @@ jobs:
     steps:
       - name: echo string steps
         run: Write-Output "Windows String"
-      - name: Error step
-        run: doesnotexists
