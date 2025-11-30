@@ -1,0 +1,38 @@
+name: Workflow Commadns
+on: [push]
+defaults:
+  run:
+    shell: bash
+    #working-directory: /de/de
+jobs:
+  ubuntu-display-wd-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display working Directory and List Files
+        run: |
+          pwd
+          ls -a
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+      - name: Change Working directory for step
+        working-directory: /home/runner
+        run: pwd
+  windows-change-shell-and-display-wd-info:
+    defaults:
+      run:
+        shell: pwsh
+    runs-on: windows-latest
+    steps:
+      - name: Display working Directory and List Files
+        run: |
+          Get-Location
+          dir
+          echo $env:GITHUB_SHA
+          echo $env:GITHUB_REPOSITORY
+          echo $env:GITHUB_WORKSPACE
+      - name: Python Shell
+        shell: python
+        run: |
+          import platform
+          print(platform.processor())
