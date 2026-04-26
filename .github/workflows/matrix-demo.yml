@@ -1,0 +1,43 @@
+name: Matrix Demo
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [18, 20, 22]
+        exclude:
+          - os: macos-latest
+
+    steps:
+      - name: Show current matrix combination
+        run: |
+          echo "=============================="
+          echo "Running on OS: ${{ matrix.os }}"
+          echo "Node version:  ${{ matrix.node-version }}"
+          echo "Runner OS:     ${{ runner.os }}"
+          echo "=============================="
+
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Verify Node is installed
+        run: |
+          echo "Node version installed:"
+          node --version
+          echo "npm version installed:"
+          npm --version
+
+      - name: Fake test step
+        run: echo "Pretending to run tests on ${{ matrix.os }} with Node ${{ matrix.node-version }} ✅"
