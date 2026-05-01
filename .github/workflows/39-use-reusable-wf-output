@@ -1,0 +1,12 @@
+name: Use the output of a reusable workflow
+on:
+  workflow_call:
+
+jobs:
+  calling-a-reusable-workflow:
+    uses: ./.github/workflows/39-reusable-wf-outputs.yaml
+  using-a-reusable-wf-output:
+    runs-on: ubuntu-latest
+    needs: calling-a-reusable-workflow
+    steps:
+      - run: echo ${{needs.calling-a-reusable-workflow.outputs.date}}
