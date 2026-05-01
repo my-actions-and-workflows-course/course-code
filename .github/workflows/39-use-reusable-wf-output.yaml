@@ -1,6 +1,6 @@
 name: Use the output of a reusable workflow
 on:
-  workflow_call:
+  workflow_dispatch:
 
 jobs:
   calling-a-reusable-workflow:
