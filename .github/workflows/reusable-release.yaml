@@ -1,0 +1,28 @@
+name: Reusable Release
+
+on:
+  workflow_call:
+    inputs:
+      report:
+        type: string
+        required: true
+    secrets:
+      RELEASE_TOKEN:
+        required: true
+    outputs:
+      release-status:
+        value: ${{ jobs.release.outputs.release-status }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    outputs:
+      release-status: ${{ steps.return-step.outputs.release-status }}
+    steps:
+      - name: confirm release
+        run: echo "Releasing ${{ inputs.report }} with provided token."
+
+      - name: returning
+        id: return-step
+        run: |
+          echo "release-status=released" >> $GITHUB_OUTPUT
